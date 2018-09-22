@@ -35,7 +35,6 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-
 /**
  * Created by derektu on 4/16/16.
  */
@@ -82,6 +81,9 @@ public class BTSerialModule extends ReactContextBaseJavaModule implements Lifecy
     }
 
     @Override
+    public void onNewIntent(Intent intent) {}
+
+    @Override
     public String getName() {
         return REACT_CLASS;
     }
@@ -114,7 +116,7 @@ public class BTSerialModule extends ReactContextBaseJavaModule implements Lifecy
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ENABLE_BT) {
             if (mEnableBTCB != null) {
                 mEnableBTCB.invoke(null, resultCode == Activity.RESULT_OK);
